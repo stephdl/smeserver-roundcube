@@ -1,0 +1,27 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+for my $event (qw(
+    bootstrap-console-save
+    conf-roundcube
+    post-upgrade
+    ))
+{
+    templates2events("/opt/roundcube/config/db.inc.php", $event);
+    templates2events("/opt/roundcube/config/main.inc.php", $event);
+    templates2events("/etc/e-smith/sql/init/80roundcube", $event);
+}
+
+for  my $event (qw(
+    conf-roundcube
+    ))
+{
+    templates2events("/etc/httpd/conf/httpd.conf", $event);
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/mysql.init");;
+    safe_symlink("sigusr1", "root/etc/e-smith/events/$event/services2adjust/httpd-e-smith");
+}
+
+
+
+

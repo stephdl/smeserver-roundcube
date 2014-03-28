@@ -1,0 +1,21 @@
+{
+    my $status = $roundcube{'status'} || "disabled";
+    return "    # roundcube is disabled in this VirtualHost"
+            unless $status eq 'enabled';
+
+{
+if ($port ne "443")
+{
+$OUT .= <<'HERE';
+## Redirect roundcubeWeb Address to Secure Address
+RewriteEngine on
+RewriteRule ^/roundcube https://%{HTTP_HOST}/roundcube
+
+## End Of Redirect
+HERE
+}
+}
+
+}
+
+

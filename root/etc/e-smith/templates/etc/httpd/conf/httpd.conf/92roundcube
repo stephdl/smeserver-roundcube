@@ -1,0 +1,83 @@
+{
+    my $status = $roundcube{'status'} || "disabled";
+    return "    # roundcube is disabled in this VirtualHost"
+            unless $status eq 'enabled';
+
+    $OUT = "";
+    my $allow = 'all';
+    my $pass = '0';
+    my $satisfy = 'all';
+    my $name = $roundcube{'Name'} || 'RoundCube IMAP Client';
+    
+    for ('exit-if-none')
+    {
+      if ($roundcube{'PublicAccess'})
+      {
+          if ($roundcube{'PublicAccess'} eq 'none')
+          {
+           next;
+          }
+          elsif ($roundcube{'PublicAccess'} eq 'local')
+          {
+            $allow   = $localAccess;
+            $pass    = 0;
+            $satisfy = 'all';
+          }
+          elsif ($roundcube{'PublicAccess'} eq 'local-pw')
+          {
+            $allow   = $localAccess;
+            $pass    = 1;
+            $satisfy = 'all';
+          }
+          elsif ($roundcube{'PublicAccess'} eq 'global')
+          {
+            $allow   = 'all';
+            $pass    = 0;
+            $satisfy = 'all';
+          }
+          elsif ($roundcube{'PublicAccess'} eq 'global-pw')
+          {
+            $allow   = 'all';
+            $pass    = 1;
+            $satisfy = 'all';
+          }
+          elsif ($roundcube{'PublicAccess'} eq 'global-pw-remote')
+          {
+            $allow   = $localAccess;
+            $pass    = 1;
+            $satisfy = 'any';
+          }
+      }
+      
+      $OUT .= "#------------------------------------------------------------\n";
+      $OUT .= "# roundcube - $name\n";
+      $OUT .= "#------------------------------------------------------------\n";
+
+      {
+        if ((exists $roundcube{'URL'}) && ($roundcube{'URL'} ne ''))
+        { $OUT .= "Alias  /$roundcube{'URL'}  /opt/roundcube\n"; }
+      }
+     
+      $OUT .= "Alias  /roundcube  /opt/roundcube\n";
+      
+      $OUT .= "\n";
+      $OUT .= "<Directory /opt/roundcube>\n";
+      $OUT .= "    order deny,allow\n";
+      $OUT .= "    deny from all\n";
+      $OUT .= "    allow from $allow\n";
+      $OUT .= "    php_admin_value upload_tmp_dir /tmp\n";
+
+      if ($pass)
+      {
+          $OUT .= "    AuthName \"$name\"\n";
+          $OUT .= "    AuthType Basic\n";
+          $OUT .= "    AuthExternal pwauth\n";
+          $OUT .= "    require valid-user\n";
+          $OUT .= "    Satisfy $satisfy\n";
+      }
+      $OUT .= "    AddType application/x-httpd-php .php\n";
+      $OUT .= "    php_admin_value open_basedir /opt/roundcube\n";
+      $OUT .= "    php_admin_value eaccelerator.enable 1\n";
+      $OUT .= "</Directory>\n";
+    }
+}

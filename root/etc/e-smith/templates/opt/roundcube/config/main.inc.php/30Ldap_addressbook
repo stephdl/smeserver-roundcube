@@ -1,0 +1,27 @@
+$rcmail_config['login_lc'] = 2;
+$rcmail_config['ldap_public']['Local_LDAP'] = array('hosts' => array('localhost'),
+                                        'port'          => 389,
+{
+    $OUT .= "                                   'base_dn'	\=\> " ."'". esmith::util::ldapBase($DomainName)."',";
+}
+                                       'search_fields' => array('Email' => 'mail', 'Name' => 'cn'),
+                                        'name_field'    => 'cn',
+                                        'email_field'    => 'mail',
+                                        'jobtitle_field'    => 'title',
+                                        'phone:work_field'  => 'telephoneNumber',
+                                        'street_field'      => 'street',
+                                        'zipcode_field'     => 'postalCode',
+                                        'region_field'      => 'st',
+                                        'locality_field'    => 'l',
+                                        'country_field'      => 'c',
+                                        'organization_field' => 'o',
+                                        'department_field'   => 'ou',
+                                        'scope'         => 'sub',
+                                        'fuzzy_search'  => 1);
+
+{
+        $OUT .= "\$rcmail_config['autocomplete_addressbooks'] = array('sql','Local_LDAP');";
+
+}
+
+

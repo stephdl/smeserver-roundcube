@@ -1,0 +1,25 @@
+{
+    my $status = $roundcube{'status'} || "disabled";
+    return "    # roundcube-status is disabled."
+            unless $status eq 'enabled';
+
+    my $domain = $roundcube{'domain'} || "disabled";
+    return "    # no hostname or domain for roundcube defined"
+            if $domain eq 'disabled';
+
+    my $DocRoot = "/opt/roundcube";
+
+    $OUT  = "";
+    $OUT .= "\n";
+    $OUT .= "# Redirect an existing hostname or domain to $DocRoot.\n";
+    $OUT .= "<VirtualHost 0.0.0.0:80>\n";
+    $OUT .= "    ServerName  $roundcube{'domain'}\n";
+    $OUT .= "    DocumentRoot $DocRoot\n";
+    $OUT .= "</VirtualHost>\n";
+    $OUT .= "<VirtualHost 0.0.0.0:443>\n";
+    $OUT .= "    ServerName  $roundcube{'domain'}\n";
+    $OUT .= "    DocumentRoot  $DocRoot\n";
+    $OUT .= "    SSLEngine on\n";
+    $OUT .= "</VirtualHost>\n";
+}
+

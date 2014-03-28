@@ -1,0 +1,24 @@
+{
+    my $db = $roundcube{DbName} || 'roundcube';
+    my $user = $roundcube{DbUser} || 'roundcube';
+    my $pass = $roundcube{DbPassword} || 'changeme';
+    $OUT .= <<END
+#! /bin/sh
+    if [ -d /var/lib/mysql/$db ]; then
+      exit
+    fi
+    /usr/bin/mysql <<EOF
+    CREATE DATABASE $db DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+    use $db;
+    source /opt/roundcube/SQL/mysql.initial.sql;
+    use mysql;
+    GRANT ALL PRIVILEGES ON $db.* TO $user\@localhost
+            IDENTIFIED BY '$pass';
+    flush privileges;
+EOF
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/carddav/dbinit/mysql.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/database/sql/mysql.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/kolab/SQL/mysql.sql
+
+END
+}

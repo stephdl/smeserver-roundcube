@@ -1,0 +1,3 @@
+{
+    $OUT = "require_once('config/main.inc.php.dist');";
+}
