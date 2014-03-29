@@ -7,13 +7,13 @@ Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
 Source: %{name}-%{version}.tar.gz
-Patch0: smeserver-roundcube-0.9-domain.patch
-Patch1: smeserver-roundcube-0.9-tmp_folder.patch
-Patch2: smeserver-roundcube-0.9-LdapAdressbooks.patch
-Patch3: smeserver-roundcube-0.9-calendar-junk-contextmenu.patch
-Patch4: smeserver-roundcube-0.9-force-https.patch
-Patch5: smeserver-roundcube-0.9-patch1.patch
-Patch6: smeserver-roundcube-0.9-patch6.patch
+#Patch0: smeserver-roundcube-0.9-domain.patch
+#Patch1: smeserver-roundcube-0.9-tmp_folder.patch
+#Patch2: smeserver-roundcube-0.9-LdapAdressbooks.patch
+#Patch3: smeserver-roundcube-0.9-calendar-junk-contextmenu.patch
+#Patch4: smeserver-roundcube-0.9-force-https.patch
+#Patch5: smeserver-roundcube-0.9-patch1.patch
+#Patch6: smeserver-roundcube-0.9-patch6.patch
 License: GNU GPL version 2
 URL: http://www.dungog.net/sme
 Group: SMEserver/addon
@@ -92,13 +92,13 @@ smserver rpm to setup the roundcube IMAP mail client.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+#%patch0 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
+#%patch4 -p1
+#%patch5 -p1
+#%patch6 -p1
 
 
 %build
