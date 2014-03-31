@@ -1,0 +1,36 @@
+{
+    $OUT .= "   \$config['db_dsnw'] = 'mysql://";
+    $OUT .= $roundcube{DbUser} . ":";
+    $OUT .= $roundcube{DbPassword} . "\@localhost/";
+    $OUT .= $roundcube{DbName} . "';";
+}
+
+{
+    $OUT .= "   \$config['default_host'] = '$DomainName';\n";
+    $OUT .= "   \$config['default_imap_folders'] = array('INBOX', 'Drafts', 'Trash');\n";
+    $OUT .= "   \$config['junk_mbox'] = 'junkmail'; \n";
+    $OUT .= "   \$config['sent-mail'] = 'sent-mail'; \n";
+    $OUT .= "   \$config['preview_pane'] = TRUE; \n";
+ 
+    $OUT .= qq(
+    // SMTP
+    \$config['smtp_server'] = 'ssl://localhost';
+
+    // SMTP port (default is 25; use 587 for STARTTLS or 465 for the
+    // deprecated SSL over SMTP (aka SMTPS))
+     );
+     
+    $OUT .= "\$config['smtp_port'] = $ssmtpd{'TCPPort'};\n";
+    $OUT .= qq(
+    // SMTP username (if required) if you use %u as the username Roundcube
+    // will use the current username for login
+    \$config['smtp_user'] = '%u';
+
+    // SMTP password (if required) if you use %p as the password Roundcube
+    // will use the current user's password for login
+    \$config['smtp_pass'] = '%p';
+    );
+     #$OUT .= "   \$config['des_key'] = \'$roundube{'deskey'}\'; \n"; 
+}
+
+

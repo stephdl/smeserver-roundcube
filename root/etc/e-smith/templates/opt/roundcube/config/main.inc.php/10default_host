@@ -1,7 +1,0 @@
-{
-    $OUT .= "\$rcmail_config['default_host'] = '$DomainName';";
-    $OUT .= "\$rcmail_config['default_imap_folders'] = array('INBOX', 'Drafts', 'Trash');";
-    $OUT .= "\$rcmail_config['junk_mbox'] = 'junkmail'; ";
-    $OUT .= "\$rcmail_config['sent-mail'] = 'sent-mail'; ";
-    $OUT .= "\$rcmail_config['preview_pane'] = TRUE; ";
-}

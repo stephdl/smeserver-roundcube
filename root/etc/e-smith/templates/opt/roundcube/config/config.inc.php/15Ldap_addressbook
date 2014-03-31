@@ -1,9 +1,13 @@
-$rcmail_config['login_lc'] = 2;
-$rcmail_config['ldap_public']['Local_LDAP'] = array('hosts' => array('localhost'),
+#=============================
+#enable the LDAP addressbook
+#=============================
+    $config['login_lc'] = 2;
+    $config['ldap_public']['Local_LDAP'] = array('hosts' => array('localhost'),
                                         'port'          => 389,
 {
     $OUT .= "                                   'base_dn'	\=\> " ."'". esmith::util::ldapBase($DomainName)."',";
 }
+
                                        'search_fields' => array('Email' => 'mail', 'Name' => 'cn'),
                                         'name_field'    => 'cn',
                                         'email_field'    => 'mail',
@@ -18,10 +22,12 @@ $rcmail_config['ldap_public']['Local_LDAP'] = array('hosts' => array('localhost'
                                         'department_field'   => 'ou',
                                         'scope'         => 'sub',
                                         'fuzzy_search'  => 1);
-
+#====================================
+#Add an autocompletion in addressbooks
+#====================================
 {
-        $OUT .= "\$rcmail_config['autocomplete_addressbooks'] = array('sql','Local_LDAP');";
-
+    $OUT .= "\$config['autocomplete_addressbooks'] = array('sql','Local_LDAP');";
+    $OUT .= "\$config['globaladdressbook_autocomplete'] = true;";
 }
 
 

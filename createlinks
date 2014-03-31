@@ -6,10 +6,10 @@ for my $event (qw(
     bootstrap-console-save
     conf-roundcube
     post-upgrade
+    console-save
     ))
 {
-    templates2events("/opt/roundcube/config/db.inc.php", $event);
-    templates2events("/opt/roundcube/config/main.inc.php", $event);
+    templates2events("/opt/roundcube/config/config.inc.php", $event);
     templates2events("/etc/e-smith/sql/init/80roundcube", $event);
 }
 

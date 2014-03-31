@@ -5,7 +5,11 @@
     $OUT .= <<END
 #! /bin/sh
     if [ -d /var/lib/mysql/$db ]; then
-      exit
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/carddav/dbinit/mysql.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/database/SQL/mysql.initial.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/kolab/SQL/mysql.initial.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
+    exit
     fi
     /usr/bin/mysql <<EOF
     CREATE DATABASE $db DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -17,8 +21,9 @@
     flush privileges;
 EOF
     /usr/bin/mysql  $db < /opt/roundcube/plugins/carddav/dbinit/mysql.sql
-    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/database/sql/mysql.sql
-    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/kolab/SQL/mysql.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/database/SQL/mysql.initial.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/kolab/SQL/mysql.initial.sql
+    /usr/bin/mysql  $db < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
 
 END
 }

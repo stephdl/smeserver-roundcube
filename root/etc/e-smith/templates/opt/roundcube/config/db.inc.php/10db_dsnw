@@ -1,6 +1,0 @@
-{
-    $OUT .= "\$rcmail_config['db_dsnw'] = 'mysql://";
-    $OUT .= $roundcube{DbUser} . ":";
-    $OUT .= $roundcube{DbPassword} . "\@localhost/";
-    $OUT .= $roundcube{DbName} . "';";
-}

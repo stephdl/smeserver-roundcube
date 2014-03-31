@@ -1,34 +1,31 @@
 %define name smeserver-roundcube
-%define version 0.9
-%define release 18
+%define version 1.0
+%define release 5
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
 Source: %{name}-%{version}.tar.gz
-#Patch0: smeserver-roundcube-0.9-domain.patch
-#Patch1: smeserver-roundcube-0.9-tmp_folder.patch
-#Patch2: smeserver-roundcube-0.9-LdapAdressbooks.patch
-#Patch3: smeserver-roundcube-0.9-calendar-junk-contextmenu.patch
-#Patch4: smeserver-roundcube-0.9-force-https.patch
-#Patch5: smeserver-roundcube-0.9-patch1.patch
-#Patch6: smeserver-roundcube-0.9-patch6.patch
 License: GNU GPL version 2
-URL: http://www.dungog.net/sme
+URL: http://www.contribs.org
 Group: SMEserver/addon
 BuildRoot: %{_tmppath}/%{name}-buildroot
 Prefix: %{_prefix}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
 Requires: e-smith-release >= 8.0
-Requires: roundcube
+Requires: roundcube >= 1.0
+Requires: git
 AutoReqProv: no
 
 %description
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Sat Feb 15 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.0-5
+- adapted to the upstream update eg roundcube 1.0
+
 * Sun Nov 10 2013 JP Pialasse <tests@pialasse.com> 0.9-18.sme
 - cleaning build section [SME: 7981]
 
@@ -93,12 +90,6 @@ smserver rpm to setup the roundcube IMAP mail client.
 %prep
 %setup
 #%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
-#%patch4 -p1
-#%patch5 -p1
-#%patch6 -p1
 
 
 %build
@@ -130,4 +121,4 @@ fi
 
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
-
+%attr(755,root,root) /usr/bin/rcplugin_update.sh
