@@ -28,6 +28,5 @@ EOF
           if [ ! -e /var/lib/mysql/roundcube/tasklists.* ]; then
              /usr/bin/mysql  roundcube < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
           fi;
-                                     
 END
 }
