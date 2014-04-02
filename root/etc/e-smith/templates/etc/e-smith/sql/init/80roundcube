@@ -8,7 +8,9 @@
     /usr/bin/mysql  $db < /opt/roundcube/plugins/carddav/dbinit/mysql.sql
     /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/database/SQL/mysql.initial.sql
     /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/kolab/SQL/mysql.initial.sql
-    /usr/bin/mysql  $db < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
+            if [ ! -e /var/lib/mysql/roundcube/tasklists.* ]; then
+               /usr/bin/mysql  roundcube < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
+            fi;
     exit
     fi
     /usr/bin/mysql <<EOF
@@ -23,7 +25,9 @@ EOF
     /usr/bin/mysql  $db < /opt/roundcube/plugins/carddav/dbinit/mysql.sql
     /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/database/SQL/mysql.initial.sql
     /usr/bin/mysql  $db < /opt/roundcube/plugins/calendar/drivers/kolab/SQL/mysql.initial.sql
-    /usr/bin/mysql  $db < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
-
+          if [ ! -e /var/lib/mysql/roundcube/tasklists.* ]; then
+             /usr/bin/mysql  roundcube < /opt/roundcube/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
+          fi;
+                                     
 END
 }
