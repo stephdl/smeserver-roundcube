@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.0
-%define release 6
+%define release 7
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -23,6 +23,9 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Wed Apr 14 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.0-7
+- removed the copymessage plugin activated
+
 * Wed Apr 02 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.0-6
 - corrected issue with the tasklists  db issue
 - added auto-update for composer in the script rcplugin_update.sh 
