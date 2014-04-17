@@ -117,7 +117,8 @@ rm -rf %{name}-%{version}
 %preun
 
 %post
-
+/bin/mv /opt/roundcube/config/main.inc.php /opt/roundcube/config/main.inc.php_old_settings >/dev/null 2>&1
+/bin/mv /opt/roundcube/config/db.inc.php /opt/roundcube/config/db.inc.php_old_settings >/dev/null 2>&1
 
 %postun
 #uninstall
