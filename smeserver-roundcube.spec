@@ -117,10 +117,10 @@ rm -rf %{name}-%{version}
 %preun
 
 %post
-if [ -e /opt/roundcube/config/main.inc.php ]; then
+if [ -f /opt/roundcube/config/main.inc.php ]; then
 /bin/mv /opt/roundcube/config/main.inc.php /opt/roundcube/config/main.inc.php_old_settings >/dev/null 2>&1
 fi
-if [ -e /bin/mv /opt/roundcube/config/db.inc.php ]; then
+if [ -f /bin/mv /opt/roundcube/config/db.inc.php ]; then
 /bin/mv /opt/roundcube/config/db.inc.php /opt/roundcube/config/db.inc.php_old_settings >/dev/null 2>&1
 fi
 
