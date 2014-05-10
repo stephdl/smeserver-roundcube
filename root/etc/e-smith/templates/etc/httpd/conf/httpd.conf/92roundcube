@@ -65,18 +65,17 @@
       $OUT .= "    order deny,allow\n";
       $OUT .= "    deny from all\n";
       $OUT .= "    allow from $allow\n";
-      $OUT .= "    php_admin_value upload_tmp_dir /tmp\n";
 
       if ($pass)
       {
           $OUT .= "    AuthName \"$name\"\n";
+          $OUT .= "    AuthBasicProvider external\n";
           $OUT .= "    AuthType Basic\n";
           $OUT .= "    AuthExternal pwauth\n";
           $OUT .= "    require valid-user\n";
           $OUT .= "    Satisfy $satisfy\n";
       }
       $OUT .= "    AddType application/x-httpd-php .php\n";
-      $OUT .= "    php_admin_value open_basedir /opt/roundcube\n";
       $OUT .= "    php_admin_value eaccelerator.enable 1\n";
       $OUT .= "</Directory>\n";
     }
