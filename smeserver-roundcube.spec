@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
-%define version 1.0
-%define release 7
+%define version 1.1
+%define release 1
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -14,7 +14,7 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 Prefix: %{_prefix}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
-Requires: e-smith-release >= 8.0
+Requires: e-smith-release >= 9.0
 Requires: roundcube >= 1.0
 Requires: git
 AutoReqProv: no
@@ -23,6 +23,9 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Sat 10 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-1
+- removed openbasedir and uploadtmpdir for roundcube compatibility 
+
 * Wed Apr 14 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.0-7
 - removed the copymessage plugin activated
 
