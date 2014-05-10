@@ -23,7 +23,7 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
-* Sat 10 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-1
+* Sat May 10 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-1
 - removed openbasedir and uploadtmpdir for roundcube compatibility 
 
 * Wed Apr 14 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.0-7
