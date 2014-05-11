@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.1
-%define release 1
+%define release 2
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -23,6 +23,9 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Sun May 11 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-2
+- adapted /etc/e-smith/sql/init/80roundcube for mysql tasklists Table
+
 * Sat May 10 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-1
 - removed openbasedir and uploadtmpdir for roundcube compatibility 
 
