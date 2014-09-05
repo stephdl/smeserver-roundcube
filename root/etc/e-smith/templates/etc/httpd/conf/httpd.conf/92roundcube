@@ -66,6 +66,22 @@
       $OUT .= "    deny from all\n";
       $OUT .= "    allow from $allow\n";
 
+      $OUT .= qq (
+<Directory /var/www/html/roundcube/config>
+  Order Deny,Allow
+  Deny from All
+</Directory>
+
+<Directory /var/www/html/roundcube/temp>
+  Order Deny,Allow
+  Deny from All
+</Directory>
+
+<Directory /var/www/html/roundcube/logs>
+  Order Deny,Allow
+  Deny from All
+</Directory>
+                 );
       if ($pass)
       {
           $OUT .= "    AuthName \"$name\"\n";
