@@ -78,5 +78,24 @@
       $OUT .= "    AddType application/x-httpd-php .php\n";
       $OUT .= "    php_admin_value eaccelerator.enable 1\n";
       $OUT .= "</Directory>\n";
+
+      $OUT .= qq (
+<Directory /var/www/html/roundcube/config>
+  Order Deny,Allow
+  Deny from All
+</Directory>
+
+<Directory /var/www/html/roundcube/temp>
+  Order Deny,Allow
+  Deny from All
+</Directory>
+
+<Directory /var/www/html/roundcube/logs>
+  Order Deny,Allow
+  Deny from All
+</Directory>
+                 );
+
+
     }
 }
