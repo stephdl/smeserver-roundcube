@@ -23,7 +23,7 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
-* Sun May 11 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-3
+* Fri Sep 05 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-3
 - added a template in httd.conf to forbid to browse /tmp /config /logs
 
 * Sun May 11 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-2
