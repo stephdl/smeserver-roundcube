@@ -1,11 +1,11 @@
 %define name smeserver-roundcube
 %define version 1.1
-%define release 3
+%define release 3%{?dist}
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
 Version: %{version}
-Release: %{release}sme
+Release: %{release}%{?dist}
 Source: %{name}-%{version}.tar.gz
 License: GNU GPL version 2
 URL: http://www.contribs.org
