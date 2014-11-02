@@ -5,7 +5,7 @@
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
 Version: %{version}
-Release: %{release}%{?dist}
+Release: %{release}sme
 Source: %{name}-%{version}.tar.gz
 License: GNU GPL version 2
 URL: http://www.contribs.org
@@ -22,7 +22,7 @@ AutoReqProv: no
 %description
 smserver rpm to setup the roundcube IMAP mail client.
 
-* Fri Aug 05 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-3
+* Fri Sep 05 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-3
 - added a template in httd.conf to forbid to browse /tmp /config /logs
 
 * Sun May 11 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-2
