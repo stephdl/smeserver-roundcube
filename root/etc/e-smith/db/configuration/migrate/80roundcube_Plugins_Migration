@@ -1,0 +1,17 @@
+{
+    use esmith::ConfigDB;
+    my $cdb = esmith::ConfigDB->open() || die "Couldn't open ConfigDB\n";
+    ##Added for version smeserver-roundcube-1.1-4
+    my $managesieve = $cdb->get_prop('roundcube','PluginsList') || '';
+
+
+     return unless ($managesieve ne '');
+
+              if ($managesieve !~ 'managesieve')
+
+                       {
+                             $managesieve = $managesieve.',managesieve';
+                             $cdb->set_prop('roundcube','PluginsList',"$managesieve");
+                       }
+
+}

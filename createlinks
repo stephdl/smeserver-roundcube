@@ -2,26 +2,40 @@
 
 use esmith::Build::CreateLinks qw(:all);
 
+#expand specific roundcube template
 for my $event (qw(
     bootstrap-console-save
     conf-roundcube
-    post-upgrade
+    roundcube-update
     console-save
     ))
 {
+
+    templates2events("/opt/roundcube/plugins/managesieve/config.inc.php", $event);
     templates2events("/opt/roundcube/config/config.inc.php", $event);
     templates2events("/etc/e-smith/sql/init/80roundcube", $event);
 }
 
+#restart specific services to avoid to reboot after the installation
 for  my $event (qw(
     conf-roundcube
+    roundcube-update
     ))
 {
     templates2events("/etc/httpd/conf/httpd.conf", $event);
-    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/mysql.init");;
+    templates2events("/etc/dovecot/dovecot.conf", $event);
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/mysql.init");
     safe_symlink("sigusr1", "root/etc/e-smith/events/$event/services2adjust/httpd-e-smith");
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/dovecot");
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/qmail");
 }
 
 
-
-
+#We want to expand /etc/e-smith/templates-user/.qmail
+foreach my $event (qw(
+    conf-roundcube
+    roundcube-update
+   ))
+{
+    event_link("qmail-update-user", $event, "20");
+}

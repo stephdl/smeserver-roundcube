@@ -1,0 +1,23 @@
+{
+    # vim: ft=perl;
+
+    # This snippet sets the managesieve_port config option of the plugin if Sieve service is enabled
+    # otherwise, the default value of "null" is kept for this config option.
+
+    use esmith::ConfigDB;
+    my $cdb = esmith::ConfigDB->open_ro || die "Couldn't open ConfigDB\n";
+
+    my $sievestatus  = $cdb->get_prop('sieve','status') || 'disabled';
+    my $sieveport    = $cdb->get_prop('sieve','TCPPort') || 'null';
+  
+    $OUT .= "// managesieve server port. When empty the port will be determined automatically\n";
+    $OUT .= "// using getservbyname() function, with 4190 as a fallback.\n";
+     
+    if ($sievestatus eq 'enabled') {
+        $OUT .= "\$config['managesieve_port'] = $sieveport; \n";
+    }
+    else {
+        $OUT .= "\$config['managesieve_port'] = null; \n";
+    }
+
+}

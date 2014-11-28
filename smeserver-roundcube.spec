@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.1
-%define release 3
+%define release 4
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -17,13 +17,24 @@ BuildRequires: e-smith-devtools
 Requires: e-smith-release >= 9.0
 Requires: roundcube >= 1.0
 Requires: git
+Requires: smeserver-dovecot-extras
 AutoReqProv: no
 
 %description
 smserver rpm to setup the roundcube IMAP mail client.
 
+
+
+
+
+%changelog
+* Fri Nov 28 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-4
+- code developed by Mats Schuh <m.schuh@neckargeo.net>
+- Add a template in /opt/roundcube/plugins/managesieve/config.inc.php
+- Allow managesieve following the status of sieve. 
+
 * Fri Sep 05 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-3
-- added a template in httd.conf to forbid to browse /tmp /config /logs
+- added a template in httpd.conf to forbid to browse /tmp /config /logs
 
 * Sun May 11 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-2
 - adapted /etc/e-smith/sql/init/80roundcube for mysql tasklists Table
