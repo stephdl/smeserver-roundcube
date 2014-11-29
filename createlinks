@@ -5,7 +5,7 @@ use esmith::Build::CreateLinks qw(:all);
 for my $event (qw(
     bootstrap-console-save
     conf-roundcube
-    post-upgrade
+    roundcube-update
     console-save
     ))
 {
@@ -15,6 +15,7 @@ for my $event (qw(
 
 for  my $event (qw(
     conf-roundcube
+    roundcube-update
     ))
 {
     templates2events("/etc/httpd/conf/httpd.conf", $event);
