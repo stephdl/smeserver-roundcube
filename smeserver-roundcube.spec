@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.1
-%define release 4
+%define release 5 
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -23,11 +23,11 @@ AutoReqProv: no
 %description
 smserver rpm to setup the roundcube IMAP mail client.
 
-
-
-
-
 %changelog
+* Sun Nov 30 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-5
+- code developed by Mats Schuh <m.schuh@neckargeo.net>
+- split the config.inc.php; now the sieve vacation gets its own template
+
 * Fri Nov 28 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-4
 - code developed by Mats Schuh <m.schuh@neckargeo.net>
 - Add a template in /opt/roundcube/plugins/managesieve/config.inc.php
