@@ -12,7 +12,7 @@ for my $event (qw(
 {
 
     templates2events("/usr/share/roundecubemail/plugins/managesieve/config.inc.php", $event);
-    templates2events("/usr/share/roundecubemail/config/config.inc.php", $event);
+    templates2events("/etc/roundcubemail/config.inc.php", $event);
     templates2events("/etc/e-smith/sql/init/80roundcube", $event);
 }
 
