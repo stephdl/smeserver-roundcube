@@ -1,0 +1,19 @@
+// ----------------------------------
+// PLUGINS
+// ----------------------------------
+
+// List of active plugins (in plugins/ directory)
+//Here we declare our activated plugins. If you want to add plugins, please do the following db command in a root terminal
+
+//config setprop roundcube PluginsList "plugin1,plugin2,plugin3"
+//Then issue
+//signal-event conf-roundcube or signal-event roundcube-update
+
+//The default list is : globaladdressbook,carddav,calendar,libcalendaring,contextmenu,markasjunk2,vcard_attachments,newmail_notifier,emoticons,tasklist
+
+{	use esmith::ConfigDB;
+        my $DB = esmith::ConfigDB->open_ro;
+        my $plugins = $DB->get_prop('roundcube','PluginsList') || "";
+        $OUT .= "\$config['plugins'] = array($plugins);";
+}
+

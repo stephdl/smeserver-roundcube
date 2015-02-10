@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
-%define version 1.1
-%define release 5 
+%define version 1.2
+%define release 1
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -15,15 +15,20 @@ Prefix: %{_prefix}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
 Requires: e-smith-release >= 9.0
-Requires: roundcube >= 1.0
+Requires: roundcubemail >= 1.0
 Requires: git
 Requires: smeserver-dovecot-extras
+Requires: roundcubemail_plugins
+Obsoletes: roundcube
 AutoReqProv: no
 
 %description
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Wed Feb 11 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-1
+- Switch to roundcubemail from Epel.
+
 * Sun Nov 30 2014 stephane de labrusse <stephdl@de-labrusse.fr> 1.1-5
 - code developed by Mats Schuh <m.schuh@neckargeo.net>
 - split the config.inc.php; now the sieve vacation gets its own template

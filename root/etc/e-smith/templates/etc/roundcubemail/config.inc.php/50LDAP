@@ -1,0 +1,9 @@
+// ----------------------------------
+// LDAP
+// ----------------------------------
+
+// Type of LDAP cache. Supported values: 'db', 'apc' and 'memcache'.
+$config['ldap_cache'] = 'db';
+
+// Lifetime of LDAP cache. Possible units: s, m, h, d, w
+$config['ldap_cache_ttl'] = '10m';

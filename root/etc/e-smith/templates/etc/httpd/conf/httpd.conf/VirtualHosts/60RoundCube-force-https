@@ -10,6 +10,7 @@ $OUT .= <<'HERE';
 ## Redirect roundcubeWeb Address to Secure Address
 RewriteEngine on
 RewriteRule ^/roundcube https://%{HTTP_HOST}/roundcube
+RewriteRule ^/roundcubemail https://%{HTTP_HOST}/roundcubemail
 
 ## End Of Redirect
 HERE

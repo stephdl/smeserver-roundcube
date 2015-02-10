@@ -1,0 +1,142 @@
+// ----------------------------------
+// USER INTERFACE
+// ----------------------------------
+
+// default messages sort column. Use empty value for default server's sorting, 
+// or 'arrival', 'date', 'subject', 'from', 'to', 'fromto', 'size', 'cc'
+$config['message_sort_col'] = '';
+
+// default messages sort order
+$config['message_sort_order'] = 'DESC';
+
+// These cols are shown in the message list. Available cols are:
+// subject, from, to, fromto, cc, replyto, date, size, status, flag, attachment, 'priority'
+$config['list_cols'] = array('subject', 'status', 'fromto', 'date', 'size', 'flag', 'attachment');
+
+// the default locale setting (leave empty for auto-detection)
+// RFC1766 formatted language name like en_US, de_DE, de_CH, fr_FR, pt_BR
+$config['language'] = null;
+
+// use this format for date display (date or strftime format)
+$config['date_format'] = 'Y-m-d';
+
+// give this choice of date formats to the user to select from
+// Note: do not use ambiguous formats like m/d/Y
+$config['date_formats'] = array('Y-m-d', 'Y/m/d', 'Y.m.d', 'd-m-Y', 'd/m/Y', 'd.m.Y', 'j.n.Y');
+
+// use this format for time display (date or strftime format)
+$config['time_format'] = 'H:i';
+
+// give this choice of time formats to the user to select from
+$config['time_formats'] = array('G:i', 'H:i', 'g:i a', 'h:i A');
+
+// use this format for short date display (derived from date_format and time_format)
+$config['date_short'] = 'D H:i';
+
+// use this format for detailed date/time formatting (derived from date_format and time_format)
+$config['date_long'] = 'Y-m-d H:i';
+
+// store draft message is this mailbox
+// leave blank if draft messages should not be stored
+// NOTE: Use folder names with namespace prefix (INBOX. on Courier-IMAP)
+$config['drafts_mbox'] = 'Drafts';
+
+// store spam messages in this mailbox
+// NOTE: Use folder names with namespace prefix (INBOX. on Courier-IMAP)
+$config['junk_mbox'] = 'junkmail';
+
+// store sent message is this mailbox
+// leave blank if sent messages should not be stored
+// NOTE: Use folder names with namespace prefix (INBOX. on Courier-IMAP)
+$config['sent_mbox'] = 'sent-mail';
+
+// move messages to this folder when deleting them
+// leave blank if they should be deleted directly
+// NOTE: Use folder names with namespace prefix (INBOX. on Courier-IMAP)
+$config['trash_mbox'] = 'Trash';
+
+// display these folders separately in the mailbox list.
+// these folders will also be displayed with localized names
+// NOTE: Use folder names with namespace prefix (INBOX. on Courier-IMAP)
+$config['default_folders'] = array('INBOX', 'Drafts', 'sent-mail', 'junkmail', 'Trash');
+
+// Disable localization of the default folder names listed above
+$config['show_real_foldernames'] = false;
+
+// automatically create the above listed default folders on first login
+$config['create_default_folders'] = true;
+
+// protect the default folders from renames, deletes, and subscription changes
+$config['protect_default_folders'] = true;
+
+// if in your system 0 quota means no limit set this option to true 
+$config['quota_zero_as_unlimited'] = false;
+
+// Make use of the built-in spell checker. It is based on GoogieSpell.
+// Since Google only accepts connections over https your PHP installatation
+// requires to be compiled with Open SSL support
+$config['enable_spellcheck'] = true;
+
+// Enables spellchecker exceptions dictionary.
+// Setting it to 'shared' will make the dictionary shared by all users.
+$config['spellcheck_dictionary'] = false;
+
+// Set the spell checking engine. Possible values:
+// - 'googie'  - the default
+// - 'pspell'  - requires the PHP Pspell module and aspell installed
+// - 'enchant' - requires the PHP Enchant module
+// - 'atd'     - install your own After the Deadline server or check with the people at http://www.afterthedeadline.com before using their API
+// Since Google shut down their public spell checking service, you need to 
+// connect to a Nox Spell Server when using 'googie' here. Therefore specify the 'spellcheck_uri'
+$config['spellcheck_engine'] = 'googie';
+
+// For locally installed Nox Spell Server or After the Deadline services,
+// please specify the URI to call it.
+// Get Nox Spell Server from http://orangoo.com/labs/?page_id=72 or
+// the After the Deadline package from http://www.afterthedeadline.com.
+// Leave empty to use the public API of service.afterthedeadline.com
+$config['spellcheck_uri'] = '';
+
+// These languages can be selected for spell checking.
+// Configure as a PHP style hash array: array('en'=>'English', 'de'=>'Deutsch');
+// Leave empty for default set of available language.
+$config['spellcheck_languages'] = NULL;
+
+// Makes that words with all letters capitalized will be ignored (e.g. GOOGLE)
+$config['spellcheck_ignore_caps'] = false;
+
+// Makes that words with numbers will be ignored (e.g. g00gle)
+$config['spellcheck_ignore_nums'] = false;
+
+// Makes that words with symbols will be ignored (e.g. g@@gle)
+$config['spellcheck_ignore_syms'] = false;
+
+// Use this char/string to separate recipients when composing a new message
+$config['recipients_separator'] = ',';
+
+// Number of lines at the end of a message considered to contain the signature.
+// Increase this value if signatures are not properly detected and colored
+$config['sig_max_lines'] = 15;
+
+// don't let users set pagesize to more than this value if set
+$config['max_pagesize'] = 200;
+
+// Minimal value of user's 'refresh_interval' setting (in seconds)
+$config['min_refresh_interval'] = 60;
+
+// Enables files upload indicator. Requires APC installed and enabled apc.rfc1867 option.
+// By default refresh time is set to 1 second. You can set this value to true
+// or any integer value indicating number of seconds.
+$config['upload_progress'] = false;
+
+// Specifies for how many seconds the Undo button will be available
+// after object delete action. Currently used with supporting address book sources.
+// Setting it to 0, disables the feature.
+$config['undo_timeout'] = 0;
+
+// A static list of canned responses which are immutable for the user
+$config['compose_responses_static'] = array(
+//  array('name' => 'Canned Response 1', 'text' => 'Static Response One'),
+//  array('name' => 'Canned Response 2', 'text' => 'Static Response Two'),
+);
+

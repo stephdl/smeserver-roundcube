@@ -1,0 +1,70 @@
+// ----------------------------------
+// ADDRESSBOOK SETTINGS
+// ----------------------------------
+
+// This indicates which type of address book to use. Possible choises:
+// 'sql' (default), 'ldap' and ''.
+// If set to 'ldap' then it will look at using the first writable LDAP
+// address book as the primary address book and it will not display the
+// SQL address book in the 'Address Book' view.
+// If set to '' then no address book will be displayed or only the
+// addressbook which is created by a plugin (like CardDAV).
+$config['address_book_type'] = 'sql';
+
+// In order to enable public ldap search, configure an array like the Verisign
+// example further below. if you would like to test, simply uncomment the example.
+// Array key must contain only safe characters, ie. a-zA-Z0-9_
+    $config['ldap_public']['Local_LDAP'] = array('hosts' => array('localhost'),
+                                        'port'          => 389,
+{
+    $OUT .= "                                   'base_dn'	\=\> " ."'". esmith::util::ldapBase($DomainName)."',";
+}
+
+                                       'search_fields' => array('Email' => 'mail', 'Name' => 'cn'),
+                                        'name_field'    => 'cn',
+                                        'email_field'    => 'mail',
+                                        'jobtitle_field'    => 'title',
+                                        'phone:work_field'  => 'telephoneNumber',
+                                        'street_field'      => 'street',
+                                        'zipcode_field'     => 'postalCode',
+                                        'region_field'      => 'st',
+                                        'locality_field'    => 'l',
+                                        'country_field'      => 'c',
+                                        'organization_field' => 'o',
+                                        'department_field'   => 'ou',
+                                        'scope'         => 'sub',
+                                        'fuzzy_search'  => 1);
+
+
+// An ordered array of the ids of the addressbooks that should be searched
+// when populating address autocomplete fields server-side. ex: array('sql','Verisign');
+{
+    $OUT .= "\$config['autocomplete_addressbooks'] = array('sql','Local_LDAP');";
+    $OUT .= "\$config['globaladdressbook_autocomplete'] = true;";
+}
+
+// The minimum number of characters required to be typed in an autocomplete field
+// before address books will be searched. Most useful for LDAP directories that
+// may need to do lengthy results building given overly-broad searches
+$config['autocomplete_min_length'] = 1;
+
+// Number of parallel autocomplete requests.
+// If there's more than one address book, n parallel (async) requests will be created,
+// where each request will search in one address book. By default (0), all address
+// books are searched in one request.
+$config['autocomplete_threads'] = 0;
+
+// Max. numer of entries in autocomplete popup. Default: 15.
+$config['autocomplete_max'] = 15;
+
+// show address fields in this order
+// available placeholders: \{street\}, \{locality\}, \{zipcode\}, \{country\}, \{region\}
+$config['address_template'] = '\{street\}<br/>\{locality\} \{zipcode\}<br/>\{country\} \{region\}';
+
+// Matching mode for addressbook search (including autocompletion)
+// 0 - partial (*abc*), default
+// 1 - strict (abc)
+// 2 - prefix (abc*)
+// Note: For LDAP sources fuzzy_search must be enabled to use 'partial' or 'prefix' mode
+$config['addressbook_search_mode'] = 0;
+

@@ -1,0 +1,44 @@
+$config = array();
+
+// ----------------------------------
+// SQL DATABASE
+// ----------------------------------
+
+// Database connection string (DSN) for read+write operations
+// Format (compatible with PEAR MDB2): db_provider://user:password@host/database
+// Currently supported db_providers: mysql, pgsql, sqlite, mssql or sqlsrv
+// For examples see http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php
+// NOTE: for SQLite use absolute path: 'sqlite:////full/path/to/sqlite.db?mode=0646'
+{
+    $OUT .= "   \$config['db_dsnw'] = 'mysql://";
+    $OUT .= $roundcube{DbUser} . ":";
+    $OUT .= $roundcube{DbPassword} . "\@localhost/";
+    $OUT .= $roundcube{DbName} . "';";
+}
+
+// Database DSN for read-only operations (if empty write database will be used)
+// useful for database replication
+$config['db_dsnr'] = '';
+
+// Disable the use of already established dsnw connections for subsequent reads
+$config['db_dsnw_noread'] = false;
+
+// use persistent db-connections
+// beware this will not "always" work as expected
+// see: http://www.php.net/manual/en/features.persistent-connections.php
+$config['db_persistent'] = false;
+
+// you can define specific table (and sequence) names prefix
+$config['db_prefix'] = '';
+
+// Mapping of table names and connections to use for ALL operations.
+// This can be used in a setup with replicated databases and a DB master
+// where read/write access to cache tables should not go to master.
+$config['db_table_dsn'] = array(
+//    'cache' => 'r',
+//    'cache_index' => 'r',
+//    'cache_thread' => 'r',
+//    'cache_messages' => 'r',
+);
+
+
