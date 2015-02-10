@@ -55,13 +55,13 @@
 
       {
         if ((exists $roundcube{'URL'}) && ($roundcube{'URL'} ne ''))
-        { $OUT .= "Alias  /$roundcube{'URL'}  /opt/roundcube\n"; }
+        { $OUT .= "Alias  /$roundcube{'URL'}  /usr/share/roundcubemail\n"; }
       }
      
-      $OUT .= "Alias  /roundcube  /opt/roundcube\n";
+      $OUT .= "Alias  /roundcube  /usr/share/roundcubemail\n";
       
       $OUT .= "\n";
-      $OUT .= "<Directory /opt/roundcube>\n";
+      $OUT .= "<Directory /usr/share/roundcubemail>\n";
       $OUT .= "    order deny,allow\n";
       $OUT .= "    deny from all\n";
       $OUT .= "    allow from $allow\n";

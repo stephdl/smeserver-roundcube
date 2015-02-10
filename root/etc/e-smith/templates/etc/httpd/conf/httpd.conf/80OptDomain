@@ -7,7 +7,7 @@
     return "    # no hostname or domain for roundcube defined"
             if $domain eq 'disabled';
 
-    my $DocRoot = "/opt/roundcube";
+    my $DocRoot = "/usr/share/roundcubemail";
 
     $OUT  = "";
     $OUT .= "\n";
