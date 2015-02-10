@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.1
-%define release 6 
+%define release 7 
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
