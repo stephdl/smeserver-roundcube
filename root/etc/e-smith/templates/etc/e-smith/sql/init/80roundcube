@@ -14,7 +14,7 @@
     /usr/bin/mysql <<EOF
     CREATE DATABASE $db DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
     use $db;
-    source /opt/roundcube/SQL/mysql.initial.sql;
+    source /usr/share/roundcubemail/SQL/mysql.initial.sql;
     use mysql;
     GRANT ALL PRIVILEGES ON $db.* TO $user\@localhost
             IDENTIFIED BY '$pass';

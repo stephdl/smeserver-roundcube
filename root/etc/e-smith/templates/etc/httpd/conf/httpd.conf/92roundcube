@@ -59,6 +59,7 @@
       }
      
       $OUT .= "Alias  /roundcube  /usr/share/roundcubemail\n";
+      $OUT .= "Alias  /roundcubemail  /usr/share/roundcubemail\n";
       
       $OUT .= "\n";
       $OUT .= "<Directory /usr/share/roundcubemail>\n";
