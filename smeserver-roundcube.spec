@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.1
-%define release 5 
+%define release 6 
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -15,7 +15,7 @@ Prefix: %{_prefix}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
 Requires: e-smith-release >= 9.0
-Requires: roundcube >= 1.0
+Requires: roundcubemail >= 1.0
 Requires: git
 Requires: smeserver-dovecot-extras
 AutoReqProv: no
