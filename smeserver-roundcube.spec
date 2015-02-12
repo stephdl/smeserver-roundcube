@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.2
-%define release 1
+%define release 2
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -26,6 +26,14 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Thu Feb 12 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-2
+- Add a migrate fragment if the dns of the main domain is set to external
+- Plugins are updated by the %post section
+- Communication beetween roundcube and imap are ssl based
+- Password and login fields are saved, a random key encrypt them in cookies
+- the installer folder is forbidden by apache and by configuration file
+- The configuration is now templated in serveral files      
+
 * Wed Feb 11 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-1
 - Switch to roundcubemail from Epel.
 
@@ -141,6 +149,12 @@ rm -rf %{name}-%{version}
 %preun
 
 %post
+#Update the plugins
+echo ""
+echo "Update the Roundcube Plugins, please wait"
+echo ""
+/usr/bin/rcplugin_update.sh
+echo ""
 
 %postun
 #uninstall

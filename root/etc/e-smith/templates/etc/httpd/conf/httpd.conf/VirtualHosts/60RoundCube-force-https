@@ -14,9 +14,10 @@ RewriteRule ^/roundcubemail https://%{HTTP_HOST}/roundcubemail
 
 ## End Of Redirect
 HERE
+
+if ((exists $roundcube{'URL'}) && ($roundcube{'URL'} ne '')) {
+    $OUT .= "RewriteRule ^/$roundcube{'URL'}  https://%{HTTP_HOST}/$roundcube{'URL'}\n";
+    }
 }
 }
-
 }
-
-
