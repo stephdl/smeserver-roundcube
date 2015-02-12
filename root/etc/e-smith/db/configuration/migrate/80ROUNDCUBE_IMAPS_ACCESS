@@ -1,0 +1,17 @@
+{
+# If you set the server dns resolver to external            
+# (for the main domain) you can not login in roundcube 
+# with the imap authentication
+
+use esmith::DomainsDB;
+my $d = esmith::DomainsDB->open_ro;
+my $domainname = $DB->get_value('DomainName')  or
+                die ("Unable to retrieve the domain name: $!");
+
+my $dns = $d->get_prop("$domainname",'Nameservers') or
+                die ("Unable to retrieve the Name Servers: $!");
+
+if ($dns ne 'localhost') {
+$DB->set_prop('imaps','access','public');
+}
+}

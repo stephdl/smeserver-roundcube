@@ -55,7 +55,7 @@ $config['use_https'] = false;
 
 // Allow browser-autocompletion on login form.
 // 0 - disabled, 1 - username and host only, 2 - username, host, password
-$config['login_autocomplete'] = 0;
+$config['login_autocomplete'] = 2;
 
 // Forces conversion of logins to lower case.
 // 0 - disabled, 1 - only domain part, 2 - domain and local part.
@@ -112,7 +112,16 @@ $config['x_frame_options'] = 'sameorigin';
 // this key is used to encrypt the users imap password which is stored
 // in the session record (and the client cookie if remember password is enabled).
 // please provide a string of exactly 24 chars.
-$config['des_key'] = 'rcmail-!24ByteDESkey*Str';
+{
+use MIME::Base64 qw(encode_base64);
+open( RANDOM, "/dev/urandom" );
+my $buf;
+read( RANDOM, $buf, 17);
+my $pwd = encode_base64($buf);
+chomp $pwd;
+close RANDOM;
+$OUT .= "\$config['des_key'] = \'$pwd\' ;\n";
+}
 
 // Automatically add this domain to user names for login
 // Only for IMAP servers that require full e-mail addresses for login

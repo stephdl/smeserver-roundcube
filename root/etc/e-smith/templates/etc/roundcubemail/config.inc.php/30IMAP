@@ -14,10 +14,10 @@
 // For example %n = mail.domain.tld, %t = domain.tld
 // WARNING: After hostname change update of mail_host column in users table is
 //          required to match old user data records with the new host.
-    {$OUT .= "   \$config['default_host'] = '$DomainName';\n";}
+    {$OUT .= "   \$config['default_host'] = 'ssl://$DomainName';\n";}
 
 // TCP port used for IMAP connections
-$config['default_port'] = 143;
+{$OUT .= "   \$config['default_port'] = $imaps{TCPPort};\n";}
 
 // IMAP AUTH type (DIGEST-MD5, CRAM-MD5, LOGIN, PLAIN or null to use
 // best server supported one)
