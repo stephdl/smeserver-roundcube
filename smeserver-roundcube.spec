@@ -143,8 +143,7 @@ rm -rf %{name}-%{version}
 %post
 #Update the plugins
 echo "update the Roundcube Plugins"
-echo ""
-/usr/bin/rcplugin_update.sh
+/usr/bin/rcplugin_update.sh 2>&1 1>/dev/null
 %postun
 #uninstall
 if [ $1 = 0 ] ; then
