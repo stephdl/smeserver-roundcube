@@ -1,5 +1,0 @@
-// Enables separate management interface for vacation responses (out-of-office)
-// 0 - no separate section (roundcube default),
-// 1 - add Vacation section (new SME default),
-// 2 - add Vacation section, but hide Filters section
-$config['managesieve_vacation'] = 1;
