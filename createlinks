@@ -11,7 +11,7 @@ for my $event (qw(
     ))
 {
 
-    templates2events("/usr/share/roundcubemail/plugins/sievesrules/config.inc.php", $event);
+    templates2events("/usr/share/roundcubemail/plugins/managesieve/config.inc.php", $event);
     templates2events("/etc/roundcubemail/config.inc.php", $event);
     templates2events("/etc/e-smith/sql/init/80roundcube", $event);
 }
@@ -39,5 +39,3 @@ foreach my $event (qw(
 {
     event_link("qmail-update-user", $event, "20");
 }
-safe_symlink("/usr/share/php/Net/LDAP3","root/usr/share/pear/Net/LDAP3");
-safe_symlink("/usr/share/php/Net/LDAP3.php","root/usr/share/pear/Net/LDAP3.php");
