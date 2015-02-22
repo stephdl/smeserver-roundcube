@@ -3,3 +3,5 @@
 // 1 - add Vacation section (new SME default),
 // 2 - add Vacation section, but hide Filters section
 $config['managesieve_vacation'] = 1;
+
+?>

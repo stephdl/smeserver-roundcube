@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.2
-%define release 2
+%define release 3
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -15,7 +15,7 @@ Prefix: %{_prefix}
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
 Requires: e-smith-release >= 9.0
-Requires: roundcubemail >= 1.0
+Requires: roundcubemail >= 1.1
 Requires: git
 Requires: smeserver-dovecot-extras
 Requires: roundcubemail_plugins
@@ -26,6 +26,10 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Sun Feb 22 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-3
+- Added sieverules plugins
+- Added a link for kolab-LDAP3
+
 * Thu Feb 12 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-2
 - Add a migrate fragment if the dns of the main domain is set to external
 - Plugins are updated by the %post section
