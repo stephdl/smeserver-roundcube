@@ -1,0 +1,7 @@
+// Show separate interfact for setting auto reply message
+// Note: sieverules_multiplerules must be set to false and sieverules_use_elsif should be set to false
+$config['sieverules_autoreply_ui'] = TRUE;
+
+// For information on customising the rule file see "The structure of the rule file" in the README
+
+?>

@@ -1,0 +1,36 @@
+/**
+ * SieveRules configuration file
+ */
+
+// managesieve server address
+// The host can contain the following macros that will be expanded as follows:
+// %n - hostname ($_SERVER['SERVER_NAME'])
+// %t - hostname without the first part
+// %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
+// %s - domain name after the '@' from e-mail address provided at login screen
+// For example %n = mail.domain.tld, %t = domain.tld
+$config['sieverules_host'] = 'localhost';
+
+// managesieve server port
+
+
+{
+    # vim: ft=perl;
+
+    # This snippet sets the managesieve_port config option of the plugin if Sieve service is enabled
+    # otherwise, the default value of "null" is kept for this config option.
+
+    use esmith::ConfigDB;
+    my $cdb = esmith::ConfigDB->open_ro || die "Couldn't open ConfigDB\n";
+
+    my $sievestatus  = $cdb->get_prop('sieve','status') || 'disabled';
+    my $sieveport    = $cdb->get_prop('sieve','TCPPort') || 'null';
+  
+    if ($sievestatus eq 'enabled') {
+        $OUT .= "\$config['sieverules_port'] = $sieveport; \n";
+    }
+    else {
+        $OUT .= "\$config['sieverules_port'] = null; \n";
+    }
+
+}
