@@ -1,6 +1,6 @@
 %define name smeserver-roundcube
 %define version 1.2
-%define release 3
+%define release 4
 
 Summary: smserver rpm to setup roundcube, an IMAP mail client
 Name: %{name}
@@ -26,6 +26,10 @@ AutoReqProv: no
 smserver rpm to setup the roundcube IMAP mail client.
 
 %changelog
+* Thu Apr 16 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-4
+- Carddav is a hugly plugin, it is now removed
+- Added a migrate fragment to remove it from DB
+
 * Sun Feb 22 2015 stephane de labrusse <stephdl@de-labrusse.fr> 1.2-3
 - Added sieverules plugins
 - Added a link for kolab-LDAP3

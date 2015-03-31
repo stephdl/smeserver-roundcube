@@ -2,16 +2,19 @@
     use esmith::ConfigDB;
     my $cdb = esmith::ConfigDB->open() || die "Couldn't open ConfigDB\n";
     ##Added for version smeserver-roundcube-1.1-4
-    my $managesieve = $cdb->get_prop('roundcube','PluginsList') || '';
+    my $plugins = $cdb->get_prop('roundcube','PluginsList') || '';
 
+    if ($plugins !~ 'managesieve')
 
-     return unless ($managesieve ne '');
+        {
+        $plugins = $plugins.',managesieve';
+        $cdb->set_prop('roundcube','PluginsList',"$plugins");
+        }
 
-              if ($managesieve !~ 'managesieve')
-
-                       {
-                             $managesieve = $managesieve.',managesieve';
-                             $cdb->set_prop('roundcube','PluginsList',"$managesieve");
-                       }
-
+#Carddav is a really bad plugin, when available it will become usefull
+   if ($plugins =~ 'carddav')
+        {
+        $plugins =~ s/,carddav//g;
+        $cdb->set_prop('roundcube','PluginsList',"$plugins");
+        }
 }
