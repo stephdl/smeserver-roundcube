@@ -4,12 +4,15 @@
     ##Added for version smeserver-roundcube-1.1-4
     my $plugins = $cdb->get_prop('roundcube','PluginsList') || '';
 
-    if ($plugins !~ 'managesieve')
+    return unless ($plugins ne '');
 
-        {
-        $plugins = $plugins.',managesieve';
-        $cdb->set_prop('roundcube','PluginsList',"$plugins");
-        }
+#sieverule is now used instead of 
+#    if ($plugins !~ 'managesieve')
+#
+#        {
+#        $plugins = $plugins.',managesieve';
+#        $cdb->set_prop('roundcube','PluginsList',"$plugins");
+#        }
 
 #Carddav is a really bad plugin, when available it will become usefull
    if ($plugins =~ 'carddav')

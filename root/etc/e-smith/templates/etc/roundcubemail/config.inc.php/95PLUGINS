@@ -9,7 +9,7 @@
 //Then issue
 //signal-event conf-roundcube or signal-event roundcube-update
 
-//The default list is : globaladdressbook,carddav,calendar,libcalendaring,contextmenu,markasjunk2,vcard_attachments,newmail_notifier,emoticons,tasklist
+//The default list is : globaladdressbook,calendar,libcalendaring,contextmenu,markasjunk2,vcard_attachments,newmail_notifier,emoticons,tasklist
 
 {	use esmith::ConfigDB;
         my $DB = esmith::ConfigDB->open_ro;

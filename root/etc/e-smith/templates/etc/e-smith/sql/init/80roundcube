@@ -5,7 +5,6 @@
     $OUT .= <<END
 #! /bin/sh
     if [ -d /var/lib/mysql/$db ]; then
-    /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/carddav/dbinit/mysql.sql
     /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/calendar/drivers/database/SQL/mysql.initial.sql
     /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/calendar/drivers/kolab/SQL/mysql.initial.sql
     /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
@@ -20,7 +19,6 @@
             IDENTIFIED BY '$pass';
     flush privileges;
 EOF
-    /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/carddav/dbinit/mysql.sql
     /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/calendar/drivers/database/SQL/mysql.initial.sql
     /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/calendar/drivers/kolab/SQL/mysql.initial.sql
     /usr/bin/mysql  $db < /usr/share/roundcubemail/plugins/tasklist/drivers/database/SQL/mysql.initial.sql
